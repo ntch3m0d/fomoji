@@ -39,10 +39,11 @@ app.config['EMOJIS']=["wink", "facepalm", "yell", "kiss", "smile"] # ORDER MATTE
 #vc = cv2.VideoCapture(0)
 fisherfaces = cv2.createFisherFaceRecognizer(0)
 
-#ubuntu paths
+# ubuntu paths
 facebox = cv2.CascadeClassifier("/home/ubuntu/application/flaskexample/models/haarcascade_frontalface_default.xml")
 #fisherfaces.load('/home/ubuntu/application/flaskexample/models/allfellows_detection_model.xml')
-fisherfaces.load('/home/ubuntu/application/flaskexample/models/fellows_and_00_detection_model.xml')
+#fisherfaces.load('/home/ubuntu/application/flaskexample/models/fellows_and_00_detection_model.xml')
+fisherfaces.load('/home/ubuntu/application/flaskexample/models/EVERYONE_model.xml')
 
 # osX paths:
 #facebox = cv2.CascadeClassifier("/Users/NVT/fomoji/flaskexample/models/haarcascade_frontalface_default.xml")
