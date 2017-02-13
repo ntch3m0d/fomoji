@@ -1,0 +1,3 @@
+*.log
+tmp/
+flaskexample_old/
