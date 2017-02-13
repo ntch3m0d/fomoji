@@ -33,3 +33,13 @@ venv
 *.pyc
 build
 
+
+.idea/vcs.xml
+
+.idea/fomoji.iml
+
+.idea/misc.xml
+
+.idea/modules.xml
+
+.idea/workspace.xml

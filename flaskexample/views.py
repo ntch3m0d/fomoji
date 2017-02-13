@@ -22,14 +22,14 @@ global shortname
 global current_emoji
 
 # ubuntu paths
-app.config['RAW_IMAGE_FOLDER']='/home/ubuntu/application/tmp' #/Users/NVT/PycharmProjects/application2/flaskexample/static/images/RAW/'
-app.config['MODELS_FOLDER']='/home/ubuntu/application/flaskexample/models/'
-app.config['STATIC_FOLDER']='/home/ubuntu/application/flaskexample/static'
+# app.config['RAW_IMAGE_FOLDER']='/home/ubuntu/application/tmp' #/Users/NVT/PycharmProjects/application2/flaskexample/static/images/RAW/'
+# app.config['MODELS_FOLDER']='/home/ubuntu/application/flaskexample/models/'
+# app.config['STATIC_FOLDER']='/home/ubuntu/application/flaskexample/static'
 
 # osX paths
-# app.config['RAW_IMAGE_FOLDER']='/Users/NVT/fomoji/tmp' #/Users/NVT/PycharmProjects/application2/flaskexample/static/images/RAW/'
-# app.config['MODELS_FOLDER']='/Users/NVT/fomoji/flaskexample/models/'
-# app.config['STATIC_FOLDER']='/Users/NVT/fomoji/flaskexample/static'
+app.config['RAW_IMAGE_FOLDER']='/Users/NVT/fomoji/tmp' #/Users/NVT/PycharmProjects/application2/flaskexample/static/images/RAW/'
+app.config['MODELS_FOLDER']='/Users/NVT/fomoji/flaskexample/models/'
+app.config['STATIC_FOLDER']='/Users/NVT/fomoji/flaskexample/static'
 
 app.config['ALLOWED_EXTENSIONS'] = set(['png', 'jpg', 'jpeg', 'gif','JPG'])
 app.config['EMOJIS']=["wink", "facepalm", "yell", "kiss", "smile"] # ORDER MATTERS!!!!!!
@@ -40,14 +40,14 @@ app.config['EMOJIS']=["wink", "facepalm", "yell", "kiss", "smile"] # ORDER MATTE
 fisherfaces = cv2.createFisherFaceRecognizer(0)
 
 #ubuntu paths
-facebox = cv2.CascadeClassifier("/home/ubuntu/application/flaskexample/models/haarcascade_frontalface_default.xml")
-#fisherfaces.load('/Users/NVT/PycharmProjects/INSIGHT_APP/fomoji/models/allfellows_detection_model.xml')
-fisherfaces.load('/home/ubuntu/application/flaskexample/models/fellows_and_00_detection_model.xml')
+# facebox = cv2.CascadeClassifier("/home/ubuntu/application/flaskexample/models/haarcascade_frontalface_default.xml")
+# #fisherfaces.load('/home/ubuntu/application/flaskexample/models/allfellows_detection_model.xml')
+# fisherfaces.load('/home/ubuntu/application/flaskexample/models/fellows_and_00_detection_model.xml')
 
 # osX paths:
-# facebox = cv2.CascadeClassifier("/Users/NVT/fomoji/flaskexample/models/haarcascade_frontalface_default.xml")
+facebox = cv2.CascadeClassifier("/Users/NVT/fomoji/flaskexample/models/haarcascade_frontalface_default.xml")
 # # fisherfaces.load('/Users/NVT/PycharmProjects/INSIGHT_APP/fomoji/models/allfellows_detection_model.xml')
-# fisherfaces.load('/Users/NVT/fomoji/flaskexample/models/fellows_and_00_detection_model.xml')
+fisherfaces.load('/Users/NVT/fomoji/flaskexample/models/fellows_and_00_detection_model.xml')
 
 
 @app.route('/')
@@ -62,6 +62,8 @@ def upload():
     current_emoji="none"
     print("HELLO!")
     myfile=request.files['file']
+    # myfile2=request.args.get['file']
+
     filename = secure_filename(myfile.filename)
     print(filename)
     fileext = filename.rsplit('.', 1)[1] # split after .
@@ -88,7 +90,7 @@ def upload():
     cv2.imwrite(os.path.join(app.config['RAW_IMAGE_FOLDER'], filehash +"." + fileext), small_frame)
 
 
-    #pf_img0 = url_for('petfinder_image',filename=idsToShow[0]+"_1.jpg")
+
     return render_template('image_loaded.html',
                            bounded_filename = url_for('uploaded_file', filename=shortname))
 
