@@ -1,4 +1,5 @@
-./webcam.jpg
+./idea
+webcam.jpg
 *.log
 tmp/*.jpg
 flaskexample_OLD/*
